@@ -33,11 +33,14 @@ def _get_latest_timestamp():
     pass
 
 
+def _validate_record():
+
+
 def _parse_record():
     pass
 
 
-def _retrieve():
+def _retrieve_record():
     pass
 
 
