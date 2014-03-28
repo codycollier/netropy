@@ -1,6 +1,15 @@
 """beacon
 
 
+rest api root:
+    https://beacon.nist.gov/rest/
+
+rest api example endpoints:
+    https://beacon.nist.gov/rest/record/1395971640
+    https://beacon.nist.gov/rest/record/previous/1395971640
+    https://beacon.nist.gov/rest/record/next/1395971640
+    https://beacon.nist.gov/rest/record/last/
+    https://beacon.nist.gov/rest/record/start-chain/1395971640
 
 """
 
@@ -20,7 +29,15 @@ def _get_current_timestamp():
     pass
 
 
+def _get_latest_timestamp():
+    pass
+
+
 def _parse_record():
+    pass
+
+
+def _retrieve():
     pass
 
 
