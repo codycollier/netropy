@@ -7,10 +7,10 @@ import unittest
 class TestTrue(unittest.TestCase):
 
     def setUp(self):
-        pass
+        unittest.TestCase.setUp(self)
 
     def tearDown(self):
-        pass
+        unittest.TestCase.tearDown(self)
 
     def test_true(self):
         self.assertTrue(True)
