@@ -6,10 +6,10 @@
 #
 #
 
-cd $(dirname $0)
+cd $(dirname ${BASH_SOURCE[0]})
 
 PYTHONPATH="$PYTHONPATH:./netropy/"
 PYTHONPATH="$PYTHONPATH:./test/unit/"
 PYTHONPATH="$PYTHONPATH:./test/functional/"
-export $PYTHONPATH
+export PYTHONPATH
 
