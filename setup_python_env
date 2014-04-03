@@ -1,0 +1,15 @@
+#
+# Setup python paths etc
+#
+# Usage:
+#    source ./setup_python_env
+#
+#
+
+cd $(dirname $0)
+
+PYTHONPATH="$PYTHONPATH:./netropy/"
+PYTHONPATH="$PYTHONPATH:./test/unit/"
+PYTHONPATH="$PYTHONPATH:./test/functional/"
+export $PYTHONPATH
+
