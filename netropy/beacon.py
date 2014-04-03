@@ -14,6 +14,9 @@ rest api example endpoints:
 """
 
 
+import collections
+
+
 record_fields = ['version', 'frequency', 'timeStamp',
                  'seedValue', 'previousOutputValue',
                  'signatureValue', 'outputValue', 'statusCode']
@@ -34,6 +37,7 @@ def _get_latest_timestamp():
 
 
 def _validate_record():
+    pass
 
 
 def _parse_record():
