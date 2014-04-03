@@ -7,9 +7,10 @@
 #
 
 cd $(dirname ${BASH_SOURCE[0]})
+root=$(pwd)
 
-PYTHONPATH="$PYTHONPATH:./netropy/"
-PYTHONPATH="$PYTHONPATH:./test/unit/"
-PYTHONPATH="$PYTHONPATH:./test/functional/"
+PYTHONPATH="$PYTHONPATH:$root/netropy/"
+PYTHONPATH="$PYTHONPATH:$root/test/unit/"
+PYTHONPATH="$PYTHONPATH:$root/test/functional/"
 export PYTHONPATH
 
