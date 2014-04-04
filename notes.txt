@@ -1,0 +1,117 @@
+
+----------------------------------
+:: reference 
+----------------------------------
+Info:
+https://beacon.nist.gov/home
+
+Schema:
+https://beacon.nist.gov/record/0.1/beacon-0.1.0.xsd
+
+
+Start of the chain
+https://beacon.nist.gov/rest/record/1378395540
+09/05/2013 10:39 am (1378395540)
+
+
+----------------------------------
+:: Rest API 
+----------------------------------
+
+Current Record (or next closest):
+https://beacon.nist.gov/rest/record/<timestamp>
+
+Previous Record:
+https://beacon.nist.gov/rest/record/previous/<timestamp>
+
+Next Record:
+https://beacon.nist.gov/rest/record/next/<timestamp>
+
+Last Record:
+https://beacon.nist.gov/rest/record/last
+
+Start Chain Record:
+https://beacon.nist.gov/rest/record/start-chain/<timestamp>
+
+
+----------------------------------
+:: Example record
+----------------------------------
+
+https://beacon.nist.gov/rest/record/1395971640
+
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<record>
+    <version>Version 1.0</version>
+    <frequency>60</frequency>
+    <timeStamp>1395971640</timeStamp>
+    <seedValue>
+        0B2E5A91798FB34A84B417A65C1030A4ACDD659D352ABEE527217754290D5D730D0DC2ECDBCAB44DEB9A8BFB94B19540474E5EB5635EEDE56AE0119843909CD5
+    </seedValue>
+    <previousOutputValue>
+        9D4C79B5122F2DD4B6D40D8F4F7B8ADF84CC598AAAA614B15BC16B395F3141EC6218EB0CD14A31B8F625133280DA9396A8E45CB7E09CA28006F4D1BA25BFF2E3
+    </previousOutputValue>
+    <signatureValue>
+        552491147E05A48842E439C2B8762A4A9B5E829517B84576CCF929C102965111696094C1550381696CDBC3607B6264753CE49807C80451BCCB08EDBA53BB757ED20C944CCB14CA0BA355EBACA6000E935637687CA4CCF1EBCBB9F239F51B750246E71920EA5460A0E56803900B78FBF222FE40A09EEDA148D6E2315D3B78F4600108457C9F7DB815C59D9308FD3E9548731AB7E50AB962A35C446445E784F6AB88E66E6E8AB54BD6625A0FE00FD992FD9519AA93F6407E831C33F420F67FB52C4C5ADE8BECA7717D706D8A68437B16D30EF100BEABCAD5C748B8FC4872F34EEA28C36310889C5E5CCAC7364D2A231B26763374880BF9F8F053D29F5A0E97219C
+    </signatureValue>
+    <outputValue>
+        5C0E8590A68522F6652997D9021B94D5932FFCFBE1CEAC551BF1B602D43BAD27F6216911698D31CC1CEDDC26907C2682E1EE34ED16A944A25C8BDE0417AEFFA7
+    </outputValue>
+    <statusCode>0</statusCode>
+
+</record>
+
+
+
+----------------------------------
+:: design
+----------------------------------
+
+fundamental data:
+- record values
+- chain of records
+- beacon as source
+
+Possible usage from the client perspective:
+
+#1
+from netropy import beacon
+b = beacon()
+
+
+#2
+from netropy import beacon
+
+beacon.now()
+beacon.current()
+
+beacon.previous()
+beacon.next()
+beacon.last()
+
+beacon.start-chain()
+beacon.start()
+
+record = beacon.now()
+
+
+#3
+from netropy import beacon
+from netropy import record
+from netropy import chain
+
+rec = beacon.now()
+
+record.verify(rec)
+
+chain.verify_previous(rec)
+chain.verify_next(rec)
+chain.verify_pair(rec1, rec2)
+chain.verify_all(rec)  <--- ?
+
+
+
+
+
+-eof
