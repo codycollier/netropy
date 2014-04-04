@@ -73,7 +73,9 @@ fundamental data:
 - chain of records
 - beacon as source
 
+
 Possible usage from the client perspective:
+
 
 #1
 from netropy import beacon
@@ -97,17 +99,32 @@ record = beacon.now()
 
 
 #3
+
+#
 from netropy import beacon
-from netropy import record
-from netropy import chain
-
 rec = beacon.now()
+rec = beacon.current()
+rec = beacon.previous()
+rec = beacon.next()
+rec = beacon.last()
+rec = beacon.start_chain()
 
-record.verify(rec)
 
+# internally consistent (local)
+from netropy.record import verify_single
+verify_single(rec)
+
+
+# externally consistent (local)
+from netropy import record
+record.verify_pair(rec1, rec2)
+
+
+# externally consistent (remote)
+from netropy import chain
 chain.verify_previous(rec)
+chain.verify_back(rec, count=1)
 chain.verify_next(rec)
-chain.verify_pair(rec1, rec2)
 chain.verify_all(rec)  <--- ?
 
 
