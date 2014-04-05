@@ -13,21 +13,37 @@ record_fields = ['version', 'frequency', 'timeStamp',
 Record = collections.namedtuple('Record', record_fields)
 
 
-def verify_record(rec):
-    """Verify a record by checking the signatureValue is valid
+def verify_record(record):
+    """Verify a record is internally consistent
 
-    From the schema file info for signatureValue:
-    A digital signature (RSA) computed over (in order):
-    version, frequency, timeStamp, randomValue, previousHashValue, errorCode
-    Note: Except for version, the hash is on the byte representations
-    and not the string representations of the data values
+    signatureValue - This can't be verified as there is no public key
+    outputValue - This should be a hash of the signatureValue
 
+    From the schema file info for outputValue:
+    The SHA-512 hash of the signatureValue as a 64 byte hex string
+
+    ALERT! - broken
+    This isn't working as expected. The outputValue is not matching a sha-512
+    hash of the signatureValue.
     """
-    return True
+    signature_value = record['signatureValue']
+    output_value = record['outputValue']
+    sv_hash = hashlib.sha512(signature_value).hexdigest()
+    return sv_hash == output_value
 
 
-def verify_pair(rec1, rec2):
-    """Verify two records which are chained together"""
-    return True
+def verify_pair(record1, record2):
+    """Verify two records which are chained together
+
+    Any given record (except the first) should be chained to the previous
+    by a matching hash in previousOutputValue.
+
+    From the schema file info for outputValue:
+    The SHA-512 hash value for the previous record - 64 byte hex string
+    
+    """
+    rec1_output_value = record1['outputValue']
+    rec2_previous_output_value = record2['previousOutputValue']
+    return rec1_output_value == rec2_previous_output_value
 
 
