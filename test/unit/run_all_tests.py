@@ -10,11 +10,9 @@ the order of the tests inside each suite is also randomized.
 import unittest
 import random
 
-import test_auth
-import test_config
-import test_message
-import test_request_parsers
-import test_writer
+import test_true
+import test_record
+import test_beacon
 
 
 test_modules = (test_true, test_record, test_beacon)
