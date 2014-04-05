@@ -56,7 +56,8 @@ class TestRecord(unittest.TestCase):
     def test_true(self):
         self.assertTrue(True)
 
-    def test_
+    def test_verify_record(self):
+        pass
 
 
 if __name__ == "__main__":
