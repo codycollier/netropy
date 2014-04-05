@@ -29,12 +29,10 @@ def _get_latest_timestamp():
     pass
 
 
-def _parse_record_xml():
-    pass
-
-
 def _retrieve_record():
-    pass
+    # record_xml = ...
+    rec = record.parse_xml_record(record_xml)
+    return rec
 
 
 def current():

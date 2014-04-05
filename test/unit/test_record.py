@@ -3,8 +3,7 @@
 
 import unittest
 
-from record import verify_record
-from record import verify_pair
+import record
 
 
 class TestRecord(unittest.TestCase):
@@ -48,19 +47,30 @@ class TestRecord(unittest.TestCase):
     def tearDown(self):
         unittest.TestCase.tearDown(self)
 
-    def test_true(self):
-        self.assertTrue(True)
-
     def test_verify_record(self):
-
         # todo - known to be failing
         for rec in (self.start_rec, self.rec1, self.rec2):
-            self.assertTrue(verify_record(rec))
+            self.assertTrue(record.verify_record(rec))
 
     def test_verify_record_pair(self):
-        self.assertTrue(verify_pair(self.rec1, self.rec2))
-        self.assertFalse(verify_pair(self.rec2, self.rec1))
-        self.assertFalse(verify_pair(self.rec1, self.start_rec))
+        self.assertTrue(record.verify_pair(self.rec1, self.rec2))
+        self.assertFalse(record.verify_pair(self.rec2, self.rec1))
+        self.assertFalse(record.verify_pair(self.rec1, self.start_rec))
+
+    def test_extract_value(self):
+        raw_xml = "<record><color>green</color><number>123</number></record>"
+        expected_val = "green"
+        val = record._extract_value('color', raw_xml)
+        self.assertEqual(val, expected_val)
+
+    def test_parse_record_xml(self):
+        rec_xml_pairs = ((self.start_rec, self.start_rec_xml),
+                         (self.rec1, self.rec1_xml),
+                         (self.rec2, self.rec2_xml))
+
+        for (expected_rec, rec_xml) in rec_xml_pairs:
+            rec = record.parse_record_xml(rec_xml)
+            self.assertTrue(rec, expected_rec)
 
 
 if __name__ == "__main__":
