@@ -4,6 +4,7 @@
 
 
 import collections
+import hashlib
 
 
 record_fields = ['version', 'frequency', 'timeStamp',
