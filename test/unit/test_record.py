@@ -63,6 +63,12 @@ class TestRecord(unittest.TestCase):
         val = record._extract_value('color', raw_xml)
         self.assertEqual(val, expected_val)
 
+    def test_extract_value_version(self):
+        raw_xml = """<?xml version="1.0" encoding="UTF-8" standalone="yes"?><record><version>Version 1.0</version></record>"""
+        expected_val = "Version 1.0"
+        val = record._extract_value('version', raw_xml)
+        self.assertEqual(val, expected_val)
+
     def test_parse_record_xml(self):
         rec_xml_pairs = ((self.start_rec, self.start_rec_xml),
                          (self.rec1, self.rec1_xml),

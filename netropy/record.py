@@ -32,7 +32,7 @@ def _extract_value(field_name, raw_xml):
 
     Simplistic string parsing version...
     """
-    val = raw_xml.split(field_name)[1].lstrip('>').rstrip('</')
+    val = raw_xml.split("%s>" % field_name)[1].rstrip('</')
     return val
 
 
