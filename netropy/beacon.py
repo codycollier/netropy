@@ -33,11 +33,13 @@ def _retrieve_record(record_url):
 
 
 def latest_timestamp(frequency=60):
-    """Generate the expected most recent timestamp"""
+    """Generate the expected most recent timestamp
+    
+    Warning: If your local clock is off, this may not return an invalid time
+
+    """
     now = int(datetime.datetime.now().strftime('%s'))
-    print("now: %s" % now)
     now -= now % frequency
-    print("new now: %s" % now)
     return now
 
 
