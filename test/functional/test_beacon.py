@@ -47,7 +47,7 @@ class TestBeacon(unittest.TestCase):
         timestamp = beacon.latest_timestamp()
         timestamp = timestamp - (88 * 60)
         rec = beacon.get_record(timestamp)
-        rec_prev = beacon.previous(timestamp)
+        rec_prev = beacon.previous(rec)
         self._basic_record_validation(rec_prev)
         self.assertTrue(rec['previousOutputValue'] == rec_prev['outputValue'])
 
@@ -56,7 +56,7 @@ class TestBeacon(unittest.TestCase):
         timestamp = beacon.latest_timestamp()
         timestamp = timestamp - (5 * 60)
         rec = beacon.get_record(timestamp)
-        rec_next = beacon.next(timestamp)
+        rec_next = beacon.next(rec)
         self._basic_record_validation(rec_next)
         self.assertTrue(rec['outputValue'] == rec_next['previousOutputValue'])
 
@@ -71,16 +71,16 @@ class TestBeacon(unittest.TestCase):
         self.assertRaises(Exception, beacon.next, last_rec['timeStamp'])
 
     def test_start_chain(self):
-        timestamp = beacon.latest_timestamp()
-        rec = beacon.start_chain(timestamp)
+        rec_current = beacon.current()
+        rec = beacon.start_chain(rec_current)
         self._basic_record_validation(rec)
         zero_val = '00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000'
         self.assertTrue(rec['previousOutputValue'] == zero_val)
         self.assertTrue(rec['statusCode'] == '1')
 
     def test_start_is_first(self):
-        timestamp = beacon.latest_timestamp()
-        start_rec = beacon.start_chain(timestamp)
+        rec_current = beacon.current()
+        start_rec = beacon.start_chain(rec_current)
         self.assertRaises(Exception, beacon.previous, start_rec['timeStamp'])
 
 

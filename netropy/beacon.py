@@ -58,14 +58,16 @@ def current(apiroot=_nist):
     return _retrieve_record(record_url)
 
 
-def previous(timestamp, apiroot=_nist):
+def previous(record, apiroot=_nist):
     """Given a timestamp, return the previous record"""
+    timestamp = record['timeStamp']
     record_url = "%s/record/previous/%s" % (apiroot, timestamp)
     return _retrieve_record(record_url)
 
 
-def next(timestamp, apiroot=_nist):
+def next(record, apiroot=_nist):
     """Given a timestamp, return the next record"""
+    timestamp = record['timeStamp']
     record_url = "%s/record/next/%s" % (apiroot, timestamp)
     return _retrieve_record(record_url)
 
@@ -76,8 +78,9 @@ def last(apiroot=_nist):
     return _retrieve_record(record_url)
 
 
-def start_chain(timestamp, apiroot=_nist):
+def start_chain(record, apiroot=_nist):
     """Given a timestamp, return the initial record in the chain"""
+    timestamp = record['timeStamp']
     record_url = "%s/record/start-chain/%s" % (apiroot, timestamp)
     return _retrieve_record(record_url)
 

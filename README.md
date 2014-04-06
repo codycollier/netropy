@@ -1,29 +1,38 @@
 
-## Netropy
+### Netropy
 
 Netropy is a python interface to the [NIST Randomness Beacon](http://www.nist.gov/itl/csd/ct/nist_beacon.cfm).
 
 
-Get the current record:
-    
+
+### API Quick Reference
 ```python
-import beacon
-rec_current = beacon.current()
-random_value = rec_current['seedValue']
-print(random_value)
-E1DB9B9919DF258E21E3A04D2D52E9F320097710588F25472E87608BEA0C72D1295B1D5EA5F199AD4E87A227BB5A4939073EBFCD512137AAD371C31299896341
+
+# Get the current/latest record
+rec = beacon.current()
+
+# Retrieve the previous record for a given record
+rec_prev = beacon.previous(rec)
+
+# Retrieve the next record for a given record
+rec_next = beacon.next(rec)
+
+# Retrieve the last record in the chain
+rec_last = beacon.last()
+
+# Retrieve the first record in the chain
+rec_first = beacon.start_chain(rec)
+
+# Verify a record
+is_valid = record.verify_record(rec)
+
+# Verify two sequential records
+is_valid = record.verify_pair(rec1, rec2)
+
 ```
 
 
-Get the previous record:
-
-```python
-rec_previous = beacon.previous(rec_current['timeStamp'])
-random_value = rec_previous['seedValue']
-print(random_value)
-299785EF23C8984459B6126222B6244E7AF0536C9EC5FF9A2D8105B0B7FB462CA0D691BCB99227D2E1337486AABF8169DE76F3D83FA2533AC9681174F926D9E3
-```
-
+### Examples
 
 A record is a dictionary representation of the xml record returned from the beacon:
 
@@ -39,6 +48,36 @@ pprint(rec)
  'timeStamp': 1396753680,
  'version': u'Version 1.0'}
 ```
+
+
+Get the current record and print the random seed value:
+    
+```python
+import beacon
+
+rec_current = beacon.current()
+random_value = rec_current['seedValue']
+print(random_value)
+E1DB9B9919DF258E21E3A04D2D52E9F320097710588F25472E87608BEA0C72D1295B1D5EA5F199AD4E87A227BB5A4939073EBFCD512137AAD371C31299896341
+```
+
+
+Get the previous record:
+
+```python
+import beacon
+
+rec_current = beacon.current()
+rec_previous = beacon.previous(rec_current)
+random_value = rec_previous['seedValue']
+print(random_value)
+299785EF23C8984459B6126222B6244E7AF0536C9EC5FF9A2D8105B0B7FB462CA0D691BCB99227D2E1337486AABF8169DE76F3D83FA2533AC9681174F926D9E3
+```
+
+
+
+
+
 
 
 
