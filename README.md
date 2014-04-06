@@ -12,6 +12,7 @@ rec_current = beacon.current()
 random_value = rec_current['seedValue']
 print(random_value)
 E1DB9B9919DF258E21E3A04D2D52E9F320097710588F25472E87608BEA0C72D1295B1D5EA5F199AD4E87A227BB5A4939073EBFCD512137AAD371C31299896341
+```
 
 
 Get the previous record:
