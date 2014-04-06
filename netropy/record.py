@@ -1,5 +1,6 @@
 """record
 
+The record data structure and helper functions.
 """
 
 

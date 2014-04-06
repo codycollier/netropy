@@ -1,5 +1,7 @@
 """beacon
 
+Functions for interacting with the remote beacon to retrieve records.
+
 
 rest api root:
     https://beacon.nist.gov/rest/
