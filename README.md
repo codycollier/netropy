@@ -5,28 +5,26 @@ Netropy is a python interface to the [NIST Randomness Beacon](http://www.nist.go
 
 
 Get the current record:
-    >>>
-    >>> import beacon
-    >>> rec_current = beacon.current()
-    >>> random_value = rec_current['seedValue']
-    >>> print(random_value)
+    
+    import beacon
+    rec_current = beacon.current()
+    random_value = rec_current['seedValue']
+    print(random_value)
     E1DB9B9919DF258E21E3A04D2D52E9F320097710588F25472E87608BEA0C72D1295B1D5EA5F199AD4E87A227BB5A4939073EBFCD512137AAD371C31299896341
 
 
 Get the previous record:
-    >>>
-    >>> rec_previous = beacon.previous(rec_current['timeStamp'])
-    >>> random_value = rec_previous['seedValue']
-    >>> print(random_value)
+
+    rec_previous = beacon.previous(rec_current['timeStamp'])
+    random_value = rec_previous['seedValue']
+    print(random_value)
     299785EF23C8984459B6126222B6244E7AF0536C9EC5FF9A2D8105B0B7FB462CA0D691BCB99227D2E1337486AABF8169DE76F3D83FA2533AC9681174F926D9E3
-    >>>
 
 
 A record is a dictionary representation of the xml record returned from the beacon:
-    >>> from pprint import pprint
-    >>>
-    >>> rec = beacon.current()
-    >>> pprint(rec)
+
+    rec = beacon.current()
+    pprint(rec)
     {'frequency': 60,
      'outputValue': u'D69D80BE6B37A98605F6693C6D0B255439CA0AE22CDC0151FF589F785F9FAAE6D61F66D999A49592C6335B4F6ADEB716A7A5F12AE2BC6426F6C4096FF3588F27',
      'previousOutputValue': u'8A4AE29B8AA1C1B74608AC226252DD25F639A3E9A4AC32549BF40E9E2052A75BFF526C90D5EEFB85B14C124DB6047DE400AC43602CE1E9342234335BBB7774DE',
