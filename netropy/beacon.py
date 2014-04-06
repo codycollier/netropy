@@ -13,45 +13,68 @@ rest api example endpoints:
 
 """
 
+import datetime
+
+import requests
 
 import record
 
 
-def _timestamp():
-    pass
+_nist = "https://beacon.nist.gov/rest"
 
 
-def _get_current_timestamp():
-    pass
-
-
-def _get_latest_timestamp():
-    pass
-
-
-def _retrieve_record():
-    # record_xml = ...
-    rec = record.parse_xml_record(record_xml)
+def _retrieve_record(record_url):
+    """Perform the http request against the beacon rest api"""
+    response = requests.get(record_url)
+    if response.status_code is not 200:
+        raise Exception("Error retrieving record (%s)" % (record_url, ))
+    rec = record.parse_record_xml(response.text)
     return rec
 
 
-def current():
-    pass
+def latest_timestamp(frequency=60):
+    """Generate the expected most recent timestamp"""
+    now = int(datetime.datetime.now().strftime('%s'))
+    print("now: %s" % now)
+    now -= now % frequency
+    print("new now: %s" % now)
+    return now
 
 
-def previous():
-    pass
+def get_record(timestamp, apiroot=_nist):
+    """Retrieve a record given a specific timestamp"""
+    record_url = "%s/record/%s" % (apiroot, timestamp)
+    return _retrieve_record(record_url)
 
 
-def next():
-    pass
+def current(apiroot=_nist):
+    """Retrieve the current record from the beacon"""
+    timestamp = latest_timestamp()
+    record_url = "%s/record/%s" % (apiroot, timestamp)
+    return _retrieve_record(record_url)
 
 
-def last():
-    pass
+def previous(timestamp, apiroot=_nist):
+    """Given a timestamp, return the previous record"""
+    record_url = "%s/record/previous/%s" % (apiroot, timestamp)
+    return _retrieve_record(record_url)
 
 
-def start_chain():
-    pass
+def next(timestamp, apiroot=_nist):
+    """Given a timestamp, return the next record"""
+    record_url = "%s/record/next/%s" % (apiroot, timestamp)
+    return _retrieve_record(record_url)
+
+
+def last(apiroot=_nist):
+    """Retrieve the last record in the chain"""
+    record_url = "%s/record/last/" % (apiroot, )
+    return _retrieve_record(record_url)
+
+
+def start_chain(timestamp, apiroot=_nist):
+    """Given a timestamp, return the initial record in the chain"""
+    record_url = "%s/record/start-chain/%s" % (apiroot, timestamp)
+    return _retrieve_record(record_url)
 
 
