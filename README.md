@@ -23,7 +23,7 @@ rec_last = beacon.last()
 # Retrieve the first record in the chain
 rec_first = beacon.start_chain(rec)
 
-# Verify a record   # BROKEN! (see code)
+# Verify a record
 is_valid = record.verify_record(rec)
 
 # Verify two sequential records
@@ -78,7 +78,7 @@ print(random_value)
 
 ### Misc
 
-Made for python 2.6 / 2.7
+Expects python 2.6 / 2.7
 
 
 

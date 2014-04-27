@@ -63,13 +63,14 @@ def verify_record(record):
     From the schema file info for outputValue:
     The SHA-512 hash of the signatureValue as a 64 byte hex string
 
-    ALERT! - broken
-    This isn't working as expected. The outputValue is not matching a sha-512
-    hash of the signatureValue.
+    reminder:
+    The outputValue hash is a hash of the signatureValue byte string, not
+    the signatureValue hex string.  See decode('hex').
+
     """
     signature_value = record['signatureValue']
     output_value = record['outputValue']
-    sv_hash = hashlib.sha512(signature_value).hexdigest()
+    sv_hash = hashlib.sha512(signature_value.decode('hex')).hexdigest().upper()
     return sv_hash == output_value
 
 

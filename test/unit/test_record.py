@@ -48,7 +48,6 @@ class TestRecord(unittest.TestCase):
         unittest.TestCase.tearDown(self)
 
     def test_verify_record(self):
-        # todo - known to be failing
         for rec in (self.start_rec, self.rec1, self.rec2):
             self.assertTrue(record.verify_record(rec))
 
