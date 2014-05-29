@@ -5,7 +5,10 @@ setup (
     name = 'netropy',
     version = '1.0',
     packages = 'netropy',
-    license = open('LICENSE').read(),
     long_description = open('README.md').read(),
+
+    license = 'The MIT License (MIT)',
+    author = 'Cody Collier',
+    url = 'https://github.com/codycollier/netropy',
 )
 
