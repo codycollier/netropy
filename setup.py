@@ -5,6 +5,7 @@ setup (
     name = 'netropy',
     version = '1.0',
     packages = ['netropy', ],
+    description = 'Netropy is a python interface to the NIST Randomness Beacon',
     long_description = open('README.md').read(),
 
     license = 'The MIT License (MIT)',
