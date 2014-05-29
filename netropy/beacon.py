@@ -36,7 +36,7 @@ def _retrieve_record(record_url):
 
 def latest_timestamp(frequency=60):
     """Generate the expected most recent timestamp
-    
+
     Warning: If your local clock is off, this may not return an invalid time
 
     """

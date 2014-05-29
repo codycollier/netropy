@@ -82,7 +82,7 @@ def verify_pair(record1, record2):
 
     From the schema file info for outputValue:
     The SHA-512 hash value for the previous record - 64 byte hex string
-    
+
     """
     rec1_output_value = record1['outputValue']
     rec2_previous_output_value = record2['previousOutputValue']
