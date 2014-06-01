@@ -5,10 +5,6 @@ Netropy
 Netropy is a python client library for the `NIST Randomness Beacon`_.
 
 
-Reminder from the NIST site:
-
-WARNING: DO NOT USE BEACON GENERATED VALUES AS SECRET CRYPTOGRAPHIC KEYS.
-
 
 API Quick Reference
 ~~~~~~~~~~~~~~~~~~~
@@ -84,6 +80,11 @@ Misc
 
 Expects python 2.6 / 2.7
 
-.. _NIST Randomness Beacon: http://www.nist.gov/itl/csd/ct/nist_beacon.cfm
 
+Reminder from the NIST site:
+
+WARNING: DO NOT USE BEACON GENERATED VALUES AS SECRET CRYPTOGRAPHIC KEYS.
+
+
+.. _NIST Randomness Beacon: http://www.nist.gov/itl/csd/ct/nist_beacon.cfm
 
