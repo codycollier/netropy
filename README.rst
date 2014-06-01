@@ -2,7 +2,12 @@
 Netropy
 ~~~~~~~
 
-Netropy is a python interface to the `NIST Randomness Beacon`_.
+Netropy is a python client library for the `NIST Randomness Beacon`_.
+
+
+Warning from the NIST site:
+WARNING: DO NOT USE BEACON GENERATED VALUES AS SECRET CRYPTOGRAPHIC KEYS.
+
 
 API Quick Reference
 ~~~~~~~~~~~~~~~~~~~
